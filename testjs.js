@@ -1,6 +1,5 @@
 const { adduser, getusers, removeuser } = require("./variablehandler.js");
-adduser("Alice");
-adduser("Bob");
-console.log(getusers());
-removeuser("Alice");
-console.log(getusers());
+function runcommand() {
+    command = document.getElementById("command");
+    eval(command.value);
+}
