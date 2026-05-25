@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Min webbsida</title>
     <style>
-        /* Grundläggande CSS för att komma igång */
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
@@ -31,13 +30,14 @@
     <main>
         <h2>test</h2>
         <p>test</p>
+        
+        <!-- Rättad input och bättre placering -->
+        <input type="text" class="text" id="command" placeholder="Skriv kommando här">
+        <button onclick="runcommand()">Run</button>
     </main>
+
+    <!-- Skripten ligger bra till precis innan body stängs -->
     <script src="./variablehandler.js"></script>
     <script src="./testjs.js"></script>
-    <input class="text" id="command">command</input>
-    <button onclick="runcommand()">Run</button>
-
-
-
 </body>
 </html>
