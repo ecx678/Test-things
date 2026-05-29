@@ -19,3 +19,8 @@ function getusers() {
   return users;
 }
 
+module.exports = {
+  adduser,
+  removeuser,
+  getusers,
+};
