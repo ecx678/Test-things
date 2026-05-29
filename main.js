@@ -1,39 +1,35 @@
 
 const express = require('express');
+const cors = require('cors'); // 1. Importera CORS
 const app = express();
 
-// Importera dina funktioner från variablehandler.js
 const { adduser, removeuser, getusers } = require("./variablehandler.js");
 
-// Gör så att Express kan läsa JSON i POST-anrop
 app.use(express.json());
+app.use(cors()); // 2. Aktivera CORS för alla domäner
 
-// 1. Hämta alla användare (Returnerar arrayen)
+// Hämta alla användare
 app.get('/users', (req, res) => {
     res.json(getusers());
 });
 
-// 2. Lägg till en användare via namn
+// Lägg till en användare
 app.post('/users', (req, res) => {
-    const { name } = req.body; // Hämtar namnet från JSON-bodyn
-    
+    const { name } = req.body;
     if (!name) {
         return res.status(400).json({ error: "Du måste skicka med ett namn" });
     }
-
     adduser(name);
     res.status(201).json({ message: `Användare ${name} tillagd` });
 });
 
-// 3. Ta bort en användare via namn
+// Ta bort en användare
 app.delete('/users/:name', (req, res) => {
-    const name = req.params.name; // Hämtar namnet direkt från URL:en
-    
+    const name = req.params.name;
     removeuser(name);
     res.json({ message: `Försökte ta bort ${name}` });
 });
 
-// Starta servern
 app.listen(3000, () => {
     console.log('API körs på http://localhost:3000');
 });
